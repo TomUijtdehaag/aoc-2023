@@ -1,4 +1,4 @@
-from two import BAG, is_possible, min_cubes, parse, power
+from d2 import BAG, is_possible, min_cubes, parse, power
 
 test_input = """Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green
 Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue
