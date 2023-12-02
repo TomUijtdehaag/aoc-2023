@@ -29,13 +29,9 @@ def is_possible(game: list[dict[str, int]], bag: dict[str, int]) -> bool:
     return True
 
 
-def possible_sum(games: list[tuple[int, list[dict[str, int]]]]) -> int:
-    return sum(game_id for game_id, game in games if is_possible(game, BAG))
-
-
 def one():
     games = [parse(line) for line in readlines("input/2.txt")]
-    return possible_sum(games)
+    return sum([id for id, game in games if is_possible(game, BAG)])
 
 
 def min_cubes(game: list[dict[str, int]]) -> dict[str, int]:

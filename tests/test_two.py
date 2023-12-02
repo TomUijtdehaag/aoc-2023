@@ -1,4 +1,4 @@
-from two import BAG, is_possible, min_cubes, parse, possible_sum, power
+from two import BAG, is_possible, min_cubes, parse, power
 
 test_input = """Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green
 Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue
@@ -37,10 +37,6 @@ def test_is_possible():
 
     for i in range(5):
         assert is_possible(parse(test_input[i])[1], BAG) == values[i]
-
-
-def test_possible_sum():
-    assert possible_sum([parse(line) for line in test_input]) == 8
 
 
 def test_min_cubes():
