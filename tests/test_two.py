@@ -33,12 +33,10 @@ def test_parse():
 
 
 def test_is_possible():
-    assert is_possible(parse(test_input[0])[1], BAG) is True
-    assert is_possible(parse(test_input[1])[1], BAG) is True
-    assert is_possible(parse(test_input[4])[1], BAG) is True
+    values = [True, True, False, False, True]
 
-    assert is_possible(parse(test_input[2])[1], BAG) is False
-    assert is_possible(parse(test_input[3])[1], BAG) is False
+    for i in range(5):
+        assert is_possible(parse(test_input[i])[1], BAG) == values[i]
 
 
 def test_possible_sum():
@@ -46,19 +44,23 @@ def test_possible_sum():
 
 
 def test_min_cubes():
-    assert min_cubes(parse(test_input[0])[1]) == {"red": 4, "green": 2, "blue": 6}
-    assert min_cubes(parse(test_input[1])[1]) == {"red": 1, "green": 3, "blue": 4}
-    assert min_cubes(parse(test_input[2])[1]) == {"red": 20, "green": 13, "blue": 6}
-    assert min_cubes(parse(test_input[3])[1]) == {"red": 14, "green": 3, "blue": 15}
-    assert min_cubes(parse(test_input[4])[1]) == {"red": 6, "green": 3, "blue": 2}
+    values = [
+        {"red": 4, "green": 2, "blue": 6},
+        {"red": 1, "green": 3, "blue": 4},
+        {"red": 20, "green": 13, "blue": 6},
+        {"red": 14, "green": 3, "blue": 15},
+        {"red": 6, "green": 3, "blue": 2},
+    ]
+
+    for i in range(5):
+        assert min_cubes(parse(test_input[i])[1]) == values[i]
 
 
 def test_power():
-    assert power(min_cubes(parse(test_input[0])[1])) == 48
-    assert power(min_cubes(parse(test_input[1])[1])) == 12
-    assert power(min_cubes(parse(test_input[2])[1])) == 1560
-    assert power(min_cubes(parse(test_input[3])[1])) == 630
-    assert power(min_cubes(parse(test_input[4])[1])) == 36
+    values = [48, 12, 1560, 630, 36]
+
+    for i in range(5):
+        assert power(min_cubes(parse(test_input[i])[1])) == values[i]
 
 
 def test_two():
