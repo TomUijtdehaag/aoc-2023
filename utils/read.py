@@ -5,4 +5,5 @@ def read(path: str) -> str:
 
 def readlines(path: str) -> str:
     with open(path, "r") as f:
-        return f.readlines()
+        lines = f.readlines()
+        return [line.strip("\n") for line in lines]
