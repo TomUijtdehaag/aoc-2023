@@ -111,7 +111,7 @@ class Schematic:
 
         return neighbors
 
-    def get_adjacent_symbols(self, part: Part) -> list[Symbol]:
+    def get_adjacent_symbols(self, part: Part) -> set[Symbol]:
         neighbors = set()
 
         for position in part.positions:
@@ -119,10 +119,10 @@ class Schematic:
 
         return set([neighbor for neighbor in neighbors if isinstance(neighbor, Symbol)])
 
-    def get_adjacent_parts(self, symbol: Symbol) -> list[Part]:
+    def get_adjacent_parts(self, symbol: Symbol) -> set[Part]:
         neighbors = self.get_neighbors(symbol.position)
 
-        return [neighbor for neighbor in neighbors if isinstance(neighbor, Part)]
+        return set([neighbor for neighbor in neighbors if isinstance(neighbor, Part)])
 
 
 def one(s: Schematic):
@@ -137,12 +137,15 @@ def two(s: Schematic):
         if symbol.char == "*" and len(s.get_adjacent_parts(symbol)) == 2
     ]
 
-    return sum(
-        [
-            parts[0] * parts[1]
-            for parts in [s.get_adjacent_parts(gear) for gear in gears]
-        ]
-    )
+    ratios = []
+    for gear in gears:
+        ratio = 1
+        for part in s.get_adjacent_parts(gear):
+            ratio *= part
+
+        ratios.append(ratio)
+
+    return sum(ratios)
 
 
 if __name__ == "__main__":
