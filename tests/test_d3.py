@@ -1,4 +1,4 @@
-from d3 import Part, Position, Schematic, Symbol
+from d3 import Part, Position, Schematic, Symbol, one, two
 
 test_input = """467..114..
 ...*......
@@ -47,3 +47,13 @@ def test_schematic():
         + Part(114, (Position(5, 0), Position(6, 0), Position(7, 0)))
         == 467 + 114
     )
+
+
+def test_one():
+    schematic = Schematic(test_input)
+    assert one(schematic) == 4361
+
+
+def test_two():
+    schematic = Schematic(test_input)
+    assert two(schematic) == 467835
